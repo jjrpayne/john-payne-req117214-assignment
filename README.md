@@ -33,7 +33,7 @@ On Windows:
 Install the requirements:
 ```pip3 install -r requirements.txt```
 
-In order to use this application you need to set a topic ID. To set it as an environment variable, create a file named ".env" with the contents:
+In order to use this application you need to set a topic ID. To set it as an environment variable, create a file named ".env" in the root directory with the contents:
 ```TOPIC_ID=[insert topic ID]```
 
 The topic ID can be provided by the [Winter Supplement Calculator](https://winter-supplement-app-d690e5-tools.apps.silver.devops.gov.bc.ca/) web app, or simply any string if you are not using the web app.
@@ -43,3 +43,27 @@ e.g:
 
 Now, you can run the app in the terminal window with the virtual environment activated:
 ```python3 bre.py```
+
+## Usage
+Using a MQTT Client such as [MQTT Explorer](https://mqtt-explorer.com/) connect to the broker at **test.mosquitto.org** using port **1883**.
+
+Publish data to the topic **BRE/calculateWinterSupplementInput/MQTT topic ID**.
+
+Input data should be in the following format:
+
+```
+{
+    "id": "str",
+    "numberOfChildren": "int",
+    "familyComposition": "str", // Choices are ["single", "couple"]
+    "familyUnitInPayForDecember": "bool" // Used for eligibility determination
+}
+```
+
+The BRE will publish output data to the topic **BRE/calculateWinterSupplementOutput/MQTT topic ID**.
+
+## Third-Party Libraries Used
+I used the following Python third-party libraries in this project:
+
+- [python-dotenv](https://pypi.org/project/python-dotenv/)
+- [paho-mqtt](https://pypi.org/project/paho-mqtt/)
