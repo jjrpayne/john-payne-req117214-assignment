@@ -62,6 +62,11 @@ Input data should be in the following format:
 
 The BRE will publish output data to the topic **BRE/calculateWinterSupplementOutput/MQTT topic ID**.
 
+## Running Unit Tests
+For this project I used Python's built-in unittest module. To run unit tests, activate the virtual environment in a terminal window (as seen in the setup stage). Then, run the following command:
+
+```python3 -m unittest```
+
 ## Third-Party Libraries Used
 I used the following Python third-party libraries in this project:
 
